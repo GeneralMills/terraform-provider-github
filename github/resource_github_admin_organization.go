@@ -31,13 +31,13 @@ func resourceGithubAdminOrganizationCreate(d *schema.ResourceData, meta interfac
 		Login: &login,
 	}
 
-	org, _, err := client.Admin.CreateOrg(context.Background(), input, admin)
+	_, _, err := client.Admin.CreateOrg(context.Background(), input, admin)
 	if err != nil {
 		return err
 	}
 
 	d.SetId(admin)
-	return org
+	return nil
 }
 
 func resourceGithubAdminOrganizationUpdate(d *schema.ResourceData, meta interface{}) error {
@@ -56,5 +56,5 @@ func resourceGithubAdminOrganizationUpdate(d *schema.ResourceData, meta interfac
 	}
 
 	d.SetId(admin)
-	return org
+	return nil
 }
